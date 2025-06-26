@@ -3,10 +3,8 @@
 import sys
 from checkmate import checkmate, validate_board
 
-def process_file(file_path: str):
+def process_file(file_path: str) -> str:
     """
-    Process a chess board file.
-    
     Args:
         file_path (str): Path to the file containing the chess board.
         
@@ -17,18 +15,18 @@ def process_file(file_path: str):
         with open(file_path, 'r') as f:
             board_content = f.read()
             
-        # Validate board format
+       
         if not validate_board(board_content):
+            # invalid board format
             return "Error"
             
-        # Check if king is in check
         result = checkmate(board_content)
         
         if result is None:  # Invalid board
             return "Error"
-        elif result:  # King is in check
+        elif result:
             return "Success"
-        else:  # King is not in check
+        else: 
             return "Fail"
     except Exception:
         return "Error"
@@ -36,6 +34,7 @@ def process_file(file_path: str):
 def main():
    
     if len(sys.argv) < 2:
+        print("File path argument is required.")
         return
         
     # Process each file provided as an argument

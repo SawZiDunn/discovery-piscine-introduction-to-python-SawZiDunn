@@ -6,10 +6,10 @@ def main():
    
     
     board = """\
-R...
-.K..
 ..P.
-....\
+.K..
+....
+Q..P\
 """
 
     # success case
